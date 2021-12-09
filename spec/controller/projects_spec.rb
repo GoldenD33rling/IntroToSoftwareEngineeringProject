@@ -19,3 +19,12 @@ RSpec.describe ProjectsController, type: :controller do
   end
 end
 
+context "Create new project" do 
+    before(:each) do  
+      user = FactoryBot.create(:user)
+      login_as(user)
+      visit new_project_path
+      within("form") do
+        fill_in "Title", with: "Test title"
+      end
+    end
